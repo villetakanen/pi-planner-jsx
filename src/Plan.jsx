@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-
+/*
+ *Ville: inProgress
+ */
 class Plan extends Component{
   constructor(props) {
     super(props);
@@ -17,6 +19,9 @@ class Plan extends Component{
   }
 }
 
+/*
+ * Ville: inProgress
+ */
 class Title extends Component{
   render(){
     return(
@@ -27,10 +32,36 @@ class Title extends Component{
   }
 }
 
-/**
- *Deprecated
- *
-class Line extends Component{
+/*
+ * Placeholder
+ */
+class Sprint extends Component{
+  render(){
+    return(
+      <g>
+        <rect class="Label-box" fill="red" x="10" y="10" width="300" height="22"/>
+        <text x="15" y="15" className="Plan-title">{this.props.value}</text>
+      </g>);
+  }
+}
+
+/*
+ * Placeholder
+ */
+class Task extends Component{
+  render(){
+    return(
+      <g>
+        <rect class="Label-box" fill="green" x="10" y="10" width="300" height="22"/>
+        <text x="15" y="15" className="Plan-title">{this.props.value}</text>
+      </g>);
+  }
+}
+
+/*
+ * Placeholder
+ */
+class Dependency extends Component{
   prepareCords() {
       let coords = {
         x1: this.props.x1,
@@ -45,7 +76,7 @@ class Line extends Component{
       return(<line {...coords} stroke="green" strokeWidth={2} />
       );
 }
-}*/
+}
 
 
 export default Plan;
