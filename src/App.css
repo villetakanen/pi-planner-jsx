@@ -1,22 +1,29 @@
 .App {
   text-align: center;
 }
-
 .App-header {
-  background-color: #345;
+  background-color: white;
   height: 4em;
   padding: 20px;
-  color: white;
+  color: #0171D3;
+  display: flex;
+  flex-direction: row;
+}
+.App-header .Logo{
+  max-height:2em;
+  margin:1em;
 }
 .App-header h1{
   font-weight: 100;
+  padding: 0;
+  margin-left:1em;
 }
 .linker{
   height:1em;
 }
 .Planner{
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  height: 80%;
 }
 .Sprint input{
   border:none;
@@ -33,9 +40,15 @@ margin: 0.5em;
 padding:0.25em;
 
 }
-.dependencymap{
-  z-index: -1;
-  position: absolute;
+
+.Increment{
+  background-color: #0171D3;
+  margin: 0.25em;
+  padding: 0.25em;
+
+}
+.Label-box{
+  color: rgba(100,200,200,0.22);
 }
 
 @keyframes App-logo-spin {
