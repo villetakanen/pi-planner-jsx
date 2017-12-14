@@ -8,7 +8,9 @@ class Plan extends Component{
     super(props);
   }
   renderSprints(data){
-
+    return(
+      <Sprint/>
+    );
   }
   render(){
     return(<svg height="1080px" width="1920" className="Increment">
@@ -26,8 +28,8 @@ class Title extends Component{
   render(){
     return(
       <g>
-        <rect class="Label-box" fill="blue" x="10" y="10" width="300" height="22"/>
-        <text x="15" y="15" className="Plan-title">{this.props.value}</text>
+        <rect class="Label-box" fill="blue" x="10" y="10" width="300" height="30"/>
+        <text x="20" y="30" font-sixe="10">{this.props.value}</text>
       </g>);
   }
 }
@@ -39,8 +41,7 @@ class Sprint extends Component{
   render(){
     return(
       <g>
-        <rect class="Label-box" fill="red" x="10" y="10" width="300" height="22"/>
-        <text x="15" y="15" className="Plan-title">{this.props.value}</text>
+        <rect class="Label-box" fill="red" x="10" y="50" width="300" height="22"/>
       </g>);
   }
 }
