@@ -21,7 +21,7 @@ class App extends Component {
 
 class Planner extends Component{
 
-  render(){
+  render(){ 
     return(
       <div className="Planner">
         <Plan area={this} data={Data}/>
