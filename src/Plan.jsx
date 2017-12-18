@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Task from './Task.jsx';
 
 /*
  *Ville: inProgress
@@ -8,46 +9,12 @@ class Plan extends Component{
     window.alert("Hey, it works for "+ name);
   }
 
-  renderSprints(data){
-    return(
-      data.sprints.map((sprint, i)=> <Sprint name={sprint.name} order={i} features={sprint.features} controller={this}/>)
-    );
-  }
-
-  /*renderDependencies(data){
-    let i=0;
-    let j=0;
-    let locs={};
-    for(const sprint in data.sprints){
-      for (const feature in sprint.features){
-        const id=feature.id;
-        console.log(id);
-        let xc=10+i*310;
-        let yc=80+j*50;
-        locs=locs+{id:{"xc":xc, "yc":yc}};
-        j++;
-      }
-      i++;
-    }
-    console.log(locs.id+ " aaa " );
-
-    let rval={};
-
-    for(const sprint in data.sprints){
-      for (const feature in sprint.features){
-        for(const dep in feature.dependencies){
-          console.log(dep);
-          rval=rval+ <Dependency ox={locs.dep.id.xc}/>
-        }
-      }
-    }
-  }*/
-
   render(){
-    return(<svg height="1080px" width="1920" className="Increment">
+    return(<svg height="1080px" width={window.innerWidth} className="Increment">
       <Title value={this.props.data.name}/>
-      {this.renderSprints(this.props.data)}
-      {/*{this.renderDependencies(this.props.data)}*/}
+      <Sprint name="Create" order="0" scale={window.innerWidth}/>
+      <Sprint name="Create" order="1" scale={window.innerWidth}/>
+      <Sprint name="Fix" order="2" scale={window.innerWidth}/>
     </svg>
     );
   }
@@ -70,81 +37,25 @@ class Title extends Component{
  * Placeholder
  */
 class Sprint extends Component{
+
   constructor(props) {
     super(props);
-    this.onClick= (evt) => this.props.controller.exampleEvent(this.props.name);
-    this.addSprint= (evt) => this.addTask();
-    this.xc=10+this.props.order*310;
-    let features=0;
-    if (this.props.features!=null) features=this.props.features.length || 0;
-    this.height=features*40+50+10;
-    console.log("order is: "+this.props.order+" and "+this.height);
-  }
-  addTask(){
-    window.alert("addTask "+this.props.name);
-  }
-
-  renderTasks(data, sprint){
-    return(
-      data.map((task, i)=> <Task name={task.name} sprint={sprint} order={i} controller={this}/>)
-    );
-  }
-
-  render(){
-    return(
-      <g>
-        <rect className="Label-box" fill="red" x={this.xc} y="50" width="300" height={this.height} onClick={this.onClick}/>
-        <text x={this.xc+10} y="70" font-sixe="10">{this.props.name}</text>
-        {this.renderTasks(this.props.features, this.props.order)}
-        <Newsprint parentx={this.xc} parenty={50+this.height} event={this.addSprint}/>
-      </g>);
-  }
-}
-class Newsprint extends Component{
-  constructor(props) {
-    super(props);
-    this.y=this.props.parenty*1;
-    console.log(this.y);
-  }
-  render(){
-  return(
-    <circle fill="black" cx={this.props.parentx+50} cy={this.y} r="20" onClick={this.props.event}/>
-  );
-}
-}
-
-class Task extends Component{
-  constructor(props) {
-    super(props);
-    this.xc=15+this.props.sprint*310;
-    this.yc=80+this.props.order*50;
-  }
-  render(){
-    return(
-      <g>
-        <rect class="Label-box" fill="green" x={this.xc} y={this.yc} width="280" height="30"/>
-        <text x={this.xc+10} y={this.yc+20} className="Plan-title">{this.props.name}</text>
-      </g>);
-  }
-}/**/
-
-
-/*class Dependency extends Component{
-  prepareCords() {
-      let coords = {
-        x1: this.props.x1,
-        y1: this.props.y1,
-        x2: this.props.x2,
-        y2: this.props.y2
-      }
-      return coords;
+    const w=(0+this.props.scale-80)/3;
+    this.state={
+      width:w,
+      x:(0+this.props.order)*(w+10)+10,
+      height:window.innerHeight-200
     }
-    render(){
-      let coords=this.prepareCords();
-      return(<line {...coords} stroke="green" strokeWidth={2} />
-      );
-}
-}/**/
+  }
 
+  render(){
+    return(
+      <g>
+        <rect className="Label-box" x={this.state.x} y="50" width={this.state.width} height={this.state.height}/>
+        <text x={this.state.x+10} y="70" font-sixe="10">{this.props.name}</text>
+      </g>);
+  }
+
+}
 
 export default Plan;

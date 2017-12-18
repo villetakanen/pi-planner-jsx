@@ -1,38 +1,7 @@
 {
-  "name": "05 - Amalthea",
-  "sprints":[
-    {
-      "name": "01 Create",
-      "features":[
-        {
-          "id":102,
-          "name": "Do the timewarp",
-          "businessvalue": 1,
-          "complexity": 2
-        }
-      ]
-    },
-    {
-      "name": "02 Destroy",
-      "features":[
-        {
-          "id":931,
-          "name": "Load Save Delete",
-          "businessvalue": 2,
-          "complexity": 1,
-          "dependencies": [102]
-        },
-        {
-          "id":1442,
-          "name": "Load Save Delete",
-          "businessvalue": 2,
-          "complexity": 1
-        }
-      ]
-    },
-    {
-      "name": "03 Simplify",
-      "features":[]
-    }
+  "tasks":[
+    {"id":14,"name": "Do the timewarp","sprint":1,"team":1},
+    {"id":19,"name": "Load Save Delete","sprint":1,"team":1},
+    {"id":34,"name": "Those are not the Droids","sprint":3,"team":2,"dependencies":[14]}
   ]
 }

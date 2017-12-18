@@ -1,0 +1,38 @@
+{
+  "name": "05 - Amalthea",
+  "sprints":[
+    {
+      "name": "01 Create",
+      "features":[
+        {
+          "id":102,
+          "name": "Do the timewarp",
+          "businessvalue": 1,
+          "complexity": 2
+        }
+      ]
+    },
+    {
+      "name": "02 Destroy",
+      "features":[
+        {
+          "id":931,
+          "name": "Load Save Delete",
+          "businessvalue": 2,
+          "complexity": 1,
+          "dependencies": [102]
+        },
+        {
+          "id":1442,
+          "name": "Load Save Delete",
+          "businessvalue": 2,
+          "complexity": 1
+        }
+      ]
+    },
+    {
+      "name": "03 Simplify",
+      "features":[]
+    }
+  ]
+}

@@ -47,7 +47,9 @@
   padding: 0.25em;
 
 }
-.Label-box{
+.Label-box, 
+.Sprint-box,
+.Task-box{
   fill: rgba(100,200,200,0.22);
 }
 
