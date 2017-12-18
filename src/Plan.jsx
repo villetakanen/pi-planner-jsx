@@ -14,7 +14,7 @@ class Plan extends Component{
     );
   }
 
-  renderDependencies(data){
+  /*renderDependencies(data){
     let i=0;
     let j=0;
     let locs={};
@@ -41,13 +41,13 @@ class Plan extends Component{
         }
       }
     }
-  }
+  }*/
 
   render(){
     return(<svg height="1080px" width="1920" className="Increment">
       <Title value={this.props.data.name}/>
       {this.renderSprints(this.props.data)}
-      {this.renderDependencies(this.props.data)}
+      {/*{this.renderDependencies(this.props.data)}*/}
     </svg>
     );
   }
@@ -73,12 +73,17 @@ class Sprint extends Component{
   constructor(props) {
     super(props);
     this.onClick= (evt) => this.props.controller.exampleEvent(this.props.name);
+    this.addSprint= (evt) => this.addTask();
     this.xc=10+this.props.order*310;
     let features=0;
     if (this.props.features!=null) features=this.props.features.length || 0;
     this.height=features*40+50+10;
     console.log("order is: "+this.props.order+" and "+this.height);
   }
+  addTask(){
+    window.alert("addTask "+this.props.name);
+  }
+
   renderTasks(data, sprint){
     return(
       data.map((task, i)=> <Task name={task.name} sprint={sprint} order={i} controller={this}/>)
@@ -91,10 +96,22 @@ class Sprint extends Component{
         <rect className="Label-box" fill="red" x={this.xc} y="50" width="300" height={this.height} onClick={this.onClick}/>
         <text x={this.xc+10} y="70" font-sixe="10">{this.props.name}</text>
         {this.renderTasks(this.props.features, this.props.order)}
+        <Newsprint parentx={this.xc} parenty={50+this.height} event={this.addSprint}/>
       </g>);
   }
 }
-
+class Newsprint extends Component{
+  constructor(props) {
+    super(props);
+    this.y=this.props.parenty*1;
+    console.log(this.y);
+  }
+  render(){
+  return(
+    <circle fill="black" cx={this.props.parentx+50} cy={this.y} r="20" onClick={this.props.event}/>
+  );
+}
+}
 
 class Task extends Component{
   constructor(props) {
@@ -112,7 +129,7 @@ class Task extends Component{
 }/**/
 
 
-class Dependency extends Component{
+/*class Dependency extends Component{
   prepareCords() {
       let coords = {
         x1: this.props.x1,
